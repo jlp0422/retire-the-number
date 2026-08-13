@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Retire the Number
 
-## Getting Started
+A mobile-first guessing game: a retired jersey hangs with its team hidden, and you have to name the player who wore it. Fixed round of 5 jerseys, with two on-demand hints (team, era) capped at 2 per round and fuzzy-matched guessing.
 
-First, run the development server:
+This is the **Stage 1 MVP** — see "Current status" below for what's real vs. placeholder.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The app is designed mobile-first (iPhone/Safari viewport); desktop is not polished yet.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Does |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm run data:build` | Regenerate `src/data/players.json` from `data/players.csv` |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+- `data/players.csv` — source spreadsheet (playerName, aliases, team, teamId, league, number, era, imageFile, difficulty)
+- `scripts/csv-to-json.ts` — manual conversion script; re-run after editing the CSV
+- `src/data/players.json` — generated, bundled directly into the app (not fetched at runtime)
+- `src/lib/types.ts` — `RetiredPlayer` schema
+- `src/lib/game/` — pure game logic: fuzzy matching (`fuzzyMatch.ts`), round building (`round.ts`), the state machine (`gameReducer.ts`)
+- `src/components/JerseySilhouette.tsx` — placeholder jersey graphic (see below)
+- `src/components/PlayGame.tsx` — the game screen + result screen (client-only, see comment in `src/app/play/page.tsx` for why)
+- `src/app/page.tsx` — landing screen
+- `src/app/play/page.tsx` — game route wrapper
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Current status (placeholder content)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No real spreadsheet or jersey photos exist yet, so:
+- `data/players.csv` holds 12 **fictional** players ("Sample Player A", etc.) across the Lakers/Celtics/Bulls/Knicks, just enough to exercise the game loop.
+- Jerseys are rendered as a generated SVG silhouette (`JerseySilhouette`, team-neutral tone, number only) instead of real cropped photos.
+- The background behind the jersey is a CSS wood-tone placeholder (`.wood-panel` in `globals.css`), standing in for the official generated hanger artwork.
 
-## Deploy on Vercel
+To bring in real content: replace `data/players.csv`, run `npm run data:build`, and swap `JerseySilhouette` for real photos (`imageFile` is already threaded through the schema).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scope
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Auth0, a leaderboard, Endless mode, the skip mechanic, multi-sport support, and a reveal animation are all out of scope for this MVP — see the project spec for the full staged plan.
