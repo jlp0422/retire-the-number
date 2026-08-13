@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f2e9d8;
+  --foreground: #2b241c;
+  --surface: #faf5e9;
+  --surface-muted: #e9dfc7;
+
+  --wood-dark: #2e2013;
+  --wood-mid: #4a3320;
+  --wood-light: #6b4a2e;
+
+  --brass: #a9793f;
+  --brass-light: #c7a35f;
+
+  --success: #3f6b4a;
+  --success-surface: #e2ead8;
+  --error: #9c4436;
+  --error-surface: #f3e0d8;
+
+  --disabled: #cabd9d;
+
+  --jersey-canvas: #efe6d1;
+  --jersey-fabric: #e2d5b4;
+  --jersey-trim: #a68b62;
+  --jersey-number: #332a20;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+
+  --color-wood-dark: var(--wood-dark);
+  --color-wood-mid: var(--wood-mid);
+  --color-wood-light: var(--wood-light);
+
+  --color-brass: var(--brass);
+  --color-brass-light: var(--brass-light);
+
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-error: var(--error);
+  --color-error-surface: var(--error-surface);
+
+  --color-disabled: var(--disabled);
+
+  --color-jersey-canvas: var(--jersey-canvas);
+  --color-jersey-fabric: var(--jersey-fabric);
+  --color-jersey-trim: var(--jersey-trim);
+  --color-jersey-number: var(--jersey-number);
+
+  --font-sans: var(--font-inter);
+  --font-serif-display: var(--font-fraunces);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-serif-display), Georgia, serif;
+}
+
+/* Placeholder for the official generated wood-wall / ivy / hanger artwork —
+   swap this panel for the real 9:16 background image once sourced. */
+.wood-panel {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(0, 0, 0, 0.18), transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(0, 0, 0, 0.25), transparent 60%),
+    repeating-linear-gradient(
+      100deg,
+      var(--color-wood-mid) 0px,
+      var(--color-wood-light) 3px,
+      var(--color-wood-mid) 7px,
+      var(--color-wood-dark) 11px
+    );
+}

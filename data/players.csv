@@ -1,0 +1,13 @@
+playerName,aliases,team,teamId,league,number,era,imageFile,difficulty
+Sample Player A,Player A;PA,Lakers,LAL,NBA,22,1979-1991,lal-22-sample-player-a.jpg,easy
+Sample Player B,Player B,Lakers,LAL,NBA,7,1996-2004,lal-7-sample-player-b.jpg,medium
+Sample Player C,Player C;PC,Lakers,LAL,NBA,14,2003-2016,lal-14-sample-player-c.jpg,hard
+Sample Player D,Player D,Celtics,BOS,NBA,5,1980-1992,bos-5-sample-player-d.jpg,easy
+Sample Player E,Player E,Celtics,BOS,NBA,11,1995-2007,bos-11-sample-player-e.jpg,medium
+Sample Player F,Player F;PF,Celtics,BOS,NBA,33,2007-2019,bos-33-sample-player-f.jpg,hard
+Sample Player G,Player G,Bulls,CHI,NBA,9,1985-1997,chi-9-sample-player-g.jpg,easy
+Sample Player H,Player H,Bulls,CHI,NBA,21,1998-2010,chi-21-sample-player-h.jpg,medium
+Sample Player I,Player I;PI,Bulls,CHI,NBA,44,2010-2022,chi-44-sample-player-i.jpg,hard
+Sample Player J,Player J,Knicks,NYK,NBA,3,1978-1990,nyk-3-sample-player-j.jpg,easy
+Sample Player K,Player K,Knicks,NYK,NBA,17,1992-2004,nyk-17-sample-player-k.jpg,medium
+Sample Player L,Player L;PL,Knicks,NYK,NBA,29,2005-2017,nyk-29-sample-player-l.jpg,hard
