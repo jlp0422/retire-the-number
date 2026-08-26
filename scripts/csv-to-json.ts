@@ -45,6 +45,7 @@ const players: RetiredPlayer[] = rows.map((row) => ({
   era: row.era,
   imageFile: row.imageFile,
   difficulty: row.difficulty as RetiredPlayer["difficulty"],
+  hasPhoto: row.hasPhoto === "true",
 }));
 
 writeFileSync(OUT_PATH, JSON.stringify(players, null, 2) + "\n");

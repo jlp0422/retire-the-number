@@ -15,6 +15,7 @@ import {
   type HintType,
 } from "@/lib/game/gameReducer";
 import { JerseySilhouette } from "@/components/JerseySilhouette";
+import { JerseyScene } from "@/components/JerseyScene";
 
 const PLAYERS = playersData as RetiredPlayer[];
 
@@ -135,7 +136,7 @@ export default function PlayGame() {
   }
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex min-h-0 flex-1 flex-col">
       <div className="grid grid-cols-3 items-center px-6 pt-4 text-xs uppercase tracking-wider text-foreground/50">
         <Link href="/" aria-label="Exit to home" className="justify-self-start text-foreground/50 hover:text-foreground">
           ← Exit
@@ -144,9 +145,15 @@ export default function PlayGame() {
         <span className="justify-self-end">Hints used: {state.hintJerseyCount}/{HINT_CAP}</span>
       </div>
 
-      <div className="wood-panel mx-4 mt-3 flex flex-1 items-center justify-center rounded-2xl">
-        <JerseySilhouette number={current.number} className="h-[85%] max-h-80 w-auto drop-shadow-lg" />
-      </div>
+      {current.hasPhoto ? (
+        <div className="mx-4 mt-3 flex min-h-0 flex-1 items-stretch justify-center overflow-hidden rounded-2xl">
+          <JerseyScene imageFile={current.imageFile} className="h-full w-auto" />
+        </div>
+      ) : (
+        <div className="wood-panel mx-4 mt-3 flex flex-1 items-center justify-center rounded-2xl">
+          <JerseySilhouette number={current.number} className="h-[85%] max-h-80 w-auto drop-shadow-lg" />
+        </div>
+      )}
 
       <div className="flex flex-col gap-4 px-6 py-5">
         <div className="flex justify-center gap-3">
