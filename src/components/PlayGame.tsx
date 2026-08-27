@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import playersData from "@/data/players.json";
 import type { RetiredPlayer } from "@/lib/types";
@@ -70,10 +71,22 @@ export default function PlayGame() {
                   : "border-error/30 bg-error-surface"
               }`}
             >
-              <JerseySilhouette
-                number={result.player.number}
-                className="h-14 w-auto shrink-0 rounded-md"
-              />
+              {result.player.hasPhoto ? (
+                <div className="relative h-14 aspect-[1024/1536] shrink-0 overflow-hidden rounded-md bg-jersey-canvas">
+                  <Image
+                    src={`/players/${result.player.imageFile}`}
+                    alt=""
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                  />
+                </div>
+              ) : (
+                <JerseySilhouette
+                  number={result.player.number}
+                  className="h-14 w-auto shrink-0 rounded-md"
+                />
+              )}
               <div className="flex flex-1 flex-col">
                 <span className="font-medium text-foreground">
                   #{i + 1} · {result.player.playerName}
@@ -124,10 +137,18 @@ export default function PlayGame() {
   const currentResult = state.results[state.currentIndex];
   const isLastJersey = state.currentIndex === state.players.length - 1;
 
+  function handlePrimaryAction() {
+    if (state.phase === "feedback") {
+      dispatch({ type: "NEXT" });
+      return;
+    }
+    if (!state.currentGuess.trim()) return;
+    dispatch({ type: "SUBMIT_GUESS" });
+  }
+
   function handleGuessSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (state.phase !== "active" || !state.currentGuess.trim()) return;
-    dispatch({ type: "SUBMIT_GUESS" });
+    handlePrimaryAction();
   }
 
   function hintLabel(hint: HintType) {
@@ -193,7 +214,7 @@ export default function PlayGame() {
               : `Not quite — it was ${current.playerName}.`}
           </div>
         ) : (
-          <form onSubmit={handleGuessSubmit} className="flex gap-2">
+          <form onSubmit={handleGuessSubmit}>
             <input
               autoFocus
               type="text"
@@ -205,26 +226,19 @@ export default function PlayGame() {
               placeholder="Who wore this number?"
               value={state.currentGuess}
               onChange={(e) => dispatch({ type: "SET_GUESS", value: e.target.value })}
-              className="flex-1 rounded-full border border-disabled bg-surface px-4 py-3 text-base text-foreground outline-none focus:border-brass"
+              className="w-full rounded-full border border-disabled bg-surface px-4 py-3 text-base text-foreground outline-none focus:border-brass"
             />
-            <button
-              type="submit"
-              className="rounded-full bg-wood-dark px-5 py-3 text-sm font-medium text-surface transition-colors hover:bg-wood-mid disabled:opacity-40"
-              disabled={!state.currentGuess.trim()}
-            >
-              Guess
-            </button>
           </form>
         )}
 
-        {state.phase === "feedback" && (
-          <button
-            onClick={() => dispatch({ type: "NEXT" })}
-            className="rounded-full bg-wood-dark px-6 py-3.5 text-base font-medium text-surface transition-colors hover:bg-wood-mid"
-          >
-            {isLastJersey ? "See Results" : "Next"}
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={handlePrimaryAction}
+          disabled={state.phase === "active" && !state.currentGuess.trim()}
+          className="rounded-full bg-wood-dark px-6 py-3.5 text-base font-medium text-surface transition-colors hover:bg-wood-mid disabled:opacity-40"
+        >
+          {state.phase === "feedback" ? (isLastJersey ? "See Results" : "Next") : "Guess"}
+        </button>
       </div>
     </main>
   );
