@@ -225,7 +225,7 @@ export default function PlayGame() {
 
         {state.phase === "feedback" && currentResult ? (
           <div
-            className={`rounded-xl border px-4 py-3 text-center text-sm font-medium ${
+            className={`rounded-xl border px-4 py-3 text-center text-base font-medium ${
               currentResult.correct
                 ? "border-success/30 bg-success-surface text-success"
                 : "border-error/30 bg-error-surface text-error"
