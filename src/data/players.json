@@ -71,7 +71,8 @@
     "id": "bos-34-paul-pierce",
     "playerName": "Paul Pierce",
     "aliases": [
-      "Paul Pierce"
+      "Paul Pierce",
+      "The Truth"
     ],
     "team": "Celtics",
     "teamId": "BOS",
@@ -104,7 +105,8 @@
     "id": "cle-23-lebron-james",
     "playerName": "LeBron James",
     "aliases": [
-      "LeBron James"
+      "LeBron James",
+      "King James"
     ],
     "team": "Cavaliers",
     "teamId": "CLE",
