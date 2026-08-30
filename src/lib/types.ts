@@ -9,4 +9,5 @@ export interface RetiredPlayer {
   era: string;
   imageFile: string;
   difficulty: "easy" | "medium" | "hard";
+  ratingScore: number;
 }
