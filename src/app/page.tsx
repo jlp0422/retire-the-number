@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { JerseySilhouette } from "@/components/JerseySilhouette";
+import { UserRatingBadge } from "@/components/UserRatingBadge";
 
 const SPORTS = [
   { label: "All", enabled: false },
@@ -51,6 +52,7 @@ export default function Home() {
           <p className="max-w-xs text-sm text-foreground/60">
             A jersey hangs, its team hidden. Name the player who wore it.
           </p>
+          <UserRatingBadge />
         </div>
 
         <div className="flex w-full max-w-sm flex-col gap-5">
