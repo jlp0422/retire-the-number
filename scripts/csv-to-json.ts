@@ -46,7 +46,14 @@ const players: RetiredPlayer[] = rows.map((row) => ({
   imageFile: row.imageFile,
   difficulty: row.difficulty as RetiredPlayer["difficulty"],
   hasPhoto: row.hasPhoto === "true",
+  ratingScore: Number(row.ratingScore),
 }));
+
+players.forEach((p) => {
+  if (!Number.isInteger(p.ratingScore) || p.ratingScore < 1 || p.ratingScore > 10) {
+    throw new Error(`${p.id}: ratingScore must be an integer 1-10, got "${p.ratingScore}"`);
+  }
+});
 
 writeFileSync(OUT_PATH, JSON.stringify(players, null, 2) + "\n");
 console.log(`Wrote ${players.length} players to ${OUT_PATH}`);

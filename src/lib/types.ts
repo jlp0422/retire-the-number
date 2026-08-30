@@ -10,4 +10,5 @@ export interface RetiredPlayer {
   imageFile: string;
   difficulty: "easy" | "medium" | "hard";
   hasPhoto: boolean;
+  ratingScore: number;
 }

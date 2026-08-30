@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import playersData from "@/data/players.json";
@@ -15,6 +15,8 @@ import {
   type GameState,
   type HintType,
 } from "@/lib/game/gameReducer";
+import { applyRoundResults } from "@/lib/game/rating";
+import { getStoredUserRating, setStoredUserRating } from "@/lib/game/userRating";
 import { JerseySilhouette } from "@/components/JerseySilhouette";
 import { JerseyScene } from "@/components/JerseyScene";
 
@@ -25,6 +27,7 @@ const PLAYERS = playersData as RetiredPlayer[];
 export default function PlayGame() {
   const [state, setState] = useState<GameState>(() => createGameState(buildRound(PLAYERS)));
   const [shareStatus, setShareStatus] = useState<"idle" | "copied">("idle");
+  const [ratingBeforeRound, setRatingBeforeRound] = useState<number>(() => getStoredUserRating());
 
   function dispatch(action: GameAction) {
     setState((prev) => gameReducer(prev, action));
@@ -32,8 +35,20 @@ export default function PlayGame() {
 
   function playAgain() {
     setShareStatus("idle");
+    setRatingBeforeRound(getStoredUserRating());
     setState(createGameState(buildRound(PLAYERS)));
   }
+
+  const ratingAfterRound = useMemo(() => {
+    if (state.phase !== "result") return ratingBeforeRound;
+    return applyRoundResults(ratingBeforeRound, state.results);
+  }, [state.phase, state.results, ratingBeforeRound]);
+
+  useEffect(() => {
+    if (state.phase === "result") {
+      setStoredUserRating(ratingAfterRound);
+    }
+  }, [state.phase, ratingAfterRound]);
 
   if (state.phase === "result") {
     const score = state.results.filter((r) => r.correct).length;
@@ -58,6 +73,13 @@ export default function PlayGame() {
           <p className="text-foreground/70">
             {score}/{state.results.length} correct · {state.hintJerseyCount} hint
             {state.hintJerseyCount === 1 ? "" : "s"} used
+          </p>
+          <p className="text-sm text-foreground/60">
+            Rating: {ratingBeforeRound.toFixed(1)} → {ratingAfterRound.toFixed(1)}{" "}
+            <span className={ratingAfterRound >= ratingBeforeRound ? "text-success" : "text-error"}>
+              ({ratingAfterRound >= ratingBeforeRound ? "+" : ""}
+              {(ratingAfterRound - ratingBeforeRound).toFixed(1)})
+            </span>
           </p>
         </div>
 

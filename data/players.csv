@@ -1,9 +1,9 @@
-playerName,aliases,team,teamId,league,number,era,imageFile,difficulty,hasPhoto
-Michael Jordan,Michael Jordan;MJ,Bulls,CHI,NBA,23,1979-1991,chi-23-michael-jordan.jpg,easy,false
-Dwyane Wade,Dwyane Wade;DWade,Heat,MIA,NBA,3,1996-2004,mia-3-dwyane-wade.jpg,medium,false
-Shaquille O'Neal,Shaquille O'Neal;Shaq,Lakers,LAL,NBA,32,2003-2016,lal-32-shaquille-oneal.jpg,hard,false
-Larry Bird,Larry Bird;LB,Celtics,BOS,NBA,33,1980-1992,bos-33-larry-bird.jpg,easy,false
-Paul Pierce,Paul Pierce,Celtics,BOS,NBA,34,1995-2007,bos-34-paul-pierce.jpg,medium,false
-Kevin Garnett,Kevin Garnett;KG,Timberwolves,MIN,NBA,21,2007-2019,min-21-kevin-garnett.jpg,hard,false
-LeBron James,LeBron James,Cavaliers,CLE,NBA,23,2003-2018,cle-23-lebron-james.jpg,easy,false
-Dan Marino,Dan Marino;Marino,Dolphins,MIA,NFL,13,1983-1999,mia-13-dan-marino.png,easy,true
+playerName,aliases,team,teamId,league,number,era,imageFile,difficulty,hasPhoto,ratingScore
+Michael Jordan,Michael Jordan;MJ,Bulls,CHI,NBA,23,1979-1991,chi-23-michael-jordan.jpg,easy,false,2
+Dwyane Wade,Dwyane Wade;DWade,Heat,MIA,NBA,3,1996-2004,mia-3-dwyane-wade.jpg,medium,false,5
+Shaquille O'Neal,Shaquille O'Neal;Shaq,Lakers,LAL,NBA,32,2003-2016,lal-32-shaquille-oneal.jpg,hard,false,8
+Larry Bird,Larry Bird;LB,Celtics,BOS,NBA,33,1980-1992,bos-33-larry-bird.jpg,easy,false,2
+Paul Pierce,Paul Pierce,Celtics,BOS,NBA,34,1995-2007,bos-34-paul-pierce.jpg,medium,false,5
+Kevin Garnett,Kevin Garnett;KG,Timberwolves,MIN,NBA,21,2007-2019,min-21-kevin-garnett.jpg,hard,false,8
+LeBron James,LeBron James,Cavaliers,CLE,NBA,23,2003-2018,cle-23-lebron-james.jpg,easy,false,2
+Dan Marino,Dan Marino;Marino,Dolphins,MIA,NFL,13,1983-1999,mia-13-dan-marino.png,easy,true,2

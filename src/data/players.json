@@ -13,7 +13,8 @@
     "era": "1979-1991",
     "imageFile": "chi-23-michael-jordan.jpg",
     "difficulty": "easy",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 2
   },
   {
     "id": "mia-3-dwyane-wade",
@@ -29,7 +30,8 @@
     "era": "1996-2004",
     "imageFile": "mia-3-dwyane-wade.jpg",
     "difficulty": "medium",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 5
   },
   {
     "id": "lal-32-shaquille-oneal",
@@ -45,7 +47,8 @@
     "era": "2003-2016",
     "imageFile": "lal-32-shaquille-oneal.jpg",
     "difficulty": "hard",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 8
   },
   {
     "id": "bos-33-larry-bird",
@@ -61,7 +64,8 @@
     "era": "1980-1992",
     "imageFile": "bos-33-larry-bird.jpg",
     "difficulty": "easy",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 2
   },
   {
     "id": "bos-34-paul-pierce",
@@ -76,7 +80,8 @@
     "era": "1995-2007",
     "imageFile": "bos-34-paul-pierce.jpg",
     "difficulty": "medium",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 5
   },
   {
     "id": "min-21-kevin-garnett",
@@ -92,7 +97,8 @@
     "era": "2007-2019",
     "imageFile": "min-21-kevin-garnett.jpg",
     "difficulty": "hard",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 8
   },
   {
     "id": "cle-23-lebron-james",
@@ -107,7 +113,8 @@
     "era": "2003-2018",
     "imageFile": "cle-23-lebron-james.jpg",
     "difficulty": "easy",
-    "hasPhoto": false
+    "hasPhoto": false,
+    "ratingScore": 2
   },
   {
     "id": "mia-13-dan-marino",
@@ -123,6 +130,7 @@
     "era": "1983-1999",
     "imageFile": "mia-13-dan-marino.png",
     "difficulty": "easy",
-    "hasPhoto": true
+    "hasPhoto": true,
+    "ratingScore": 2
   }
 ]
