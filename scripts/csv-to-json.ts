@@ -45,6 +45,7 @@ const players: RetiredPlayer[] = rows.map((row) => ({
   era: row.era,
   imageFile: row.imageFile,
   difficulty: row.difficulty as RetiredPlayer["difficulty"],
+  hasPhoto: row.hasPhoto === "true",
   ratingScore: Number(row.ratingScore),
 }));
 

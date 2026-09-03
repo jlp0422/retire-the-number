@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import playersData from "@/data/players.json";
 import type { RetiredPlayer } from "@/lib/types";
@@ -17,6 +18,7 @@ import {
 import { applyRoundResults } from "@/lib/game/rating";
 import { getStoredUserRating, setStoredUserRating } from "@/lib/game/userRating";
 import { JerseySilhouette } from "@/components/JerseySilhouette";
+import { JerseyScene } from "@/components/JerseyScene";
 
 const PLAYERS = playersData as RetiredPlayer[];
 
@@ -91,10 +93,22 @@ export default function PlayGame() {
                   : "border-error/30 bg-error-surface"
               }`}
             >
-              <JerseySilhouette
-                number={result.player.number}
-                className="h-14 w-auto shrink-0 rounded-md"
-              />
+              {result.player.hasPhoto ? (
+                <div className="relative h-14 aspect-[1024/1536] shrink-0 overflow-hidden rounded-md bg-jersey-canvas">
+                  <Image
+                    src={`/players/${result.player.imageFile}`}
+                    alt=""
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                  />
+                </div>
+              ) : (
+                <JerseySilhouette
+                  number={result.player.number}
+                  className="h-14 w-auto shrink-0 rounded-md"
+                />
+              )}
               <div className="flex flex-1 flex-col">
                 <span className="font-medium text-foreground">
                   #{i + 1} · {result.player.playerName}
@@ -145,10 +159,18 @@ export default function PlayGame() {
   const currentResult = state.results[state.currentIndex];
   const isLastJersey = state.currentIndex === state.players.length - 1;
 
+  function handlePrimaryAction() {
+    if (state.phase === "feedback") {
+      dispatch({ type: "NEXT" });
+      return;
+    }
+    if (!state.currentGuess.trim()) return;
+    dispatch({ type: "SUBMIT_GUESS" });
+  }
+
   function handleGuessSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (state.phase !== "active" || !state.currentGuess.trim()) return;
-    dispatch({ type: "SUBMIT_GUESS" });
+    handlePrimaryAction();
   }
 
   function hintLabel(hint: HintType) {
@@ -157,7 +179,7 @@ export default function PlayGame() {
   }
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex min-h-0 flex-1 flex-col">
       <div className="grid grid-cols-3 items-center px-6 pt-4 text-xs uppercase tracking-wider text-foreground/50">
         <Link href="/" aria-label="Exit to home" className="justify-self-start text-foreground/50 hover:text-foreground">
           ← Exit
@@ -166,9 +188,15 @@ export default function PlayGame() {
         <span className="justify-self-end">Hints used: {state.hintJerseyCount}/{HINT_CAP}</span>
       </div>
 
-      <div className="wood-panel mx-4 mt-3 flex flex-1 items-center justify-center rounded-2xl">
-        <JerseySilhouette number={current.number} className="h-[85%] max-h-80 w-auto drop-shadow-lg" />
-      </div>
+      {current.hasPhoto ? (
+        <div className="mx-4 mt-3 flex min-h-0 flex-1 items-stretch justify-center overflow-hidden rounded-2xl">
+          <JerseyScene imageFile={current.imageFile} className="h-full w-auto" />
+        </div>
+      ) : (
+        <div className="wood-panel mx-4 mt-3 flex flex-1 items-center justify-center rounded-2xl">
+          <JerseySilhouette number={current.number} className="h-[85%] max-h-80 w-auto drop-shadow-lg" />
+        </div>
+      )}
 
       <div className="flex flex-col gap-4 px-6 py-5">
         <div className="flex justify-center gap-3">
@@ -197,7 +225,7 @@ export default function PlayGame() {
 
         {state.phase === "feedback" && currentResult ? (
           <div
-            className={`rounded-xl border px-4 py-3 text-center text-sm font-medium ${
+            className={`rounded-xl border px-4 py-3 text-center text-base font-medium ${
               currentResult.correct
                 ? "border-success/30 bg-success-surface text-success"
                 : "border-error/30 bg-error-surface text-error"
@@ -208,7 +236,7 @@ export default function PlayGame() {
               : `Not quite — it was ${current.playerName}.`}
           </div>
         ) : (
-          <form onSubmit={handleGuessSubmit} className="flex gap-2">
+          <form onSubmit={handleGuessSubmit}>
             <input
               autoFocus
               type="text"
@@ -220,26 +248,19 @@ export default function PlayGame() {
               placeholder="Who wore this number?"
               value={state.currentGuess}
               onChange={(e) => dispatch({ type: "SET_GUESS", value: e.target.value })}
-              className="flex-1 rounded-full border border-disabled bg-surface px-4 py-3 text-base text-foreground outline-none focus:border-brass"
+              className="w-full rounded-full border border-disabled bg-surface px-4 py-3 text-base text-foreground outline-none focus:border-brass"
             />
-            <button
-              type="submit"
-              className="rounded-full bg-wood-dark px-5 py-3 text-sm font-medium text-surface transition-colors hover:bg-wood-mid disabled:opacity-40"
-              disabled={!state.currentGuess.trim()}
-            >
-              Guess
-            </button>
           </form>
         )}
 
-        {state.phase === "feedback" && (
-          <button
-            onClick={() => dispatch({ type: "NEXT" })}
-            className="rounded-full bg-wood-dark px-6 py-3.5 text-base font-medium text-surface transition-colors hover:bg-wood-mid"
-          >
-            {isLastJersey ? "See Results" : "Next"}
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={handlePrimaryAction}
+          disabled={state.phase === "active" && !state.currentGuess.trim()}
+          className="rounded-full bg-wood-dark px-6 py-3.5 text-base font-medium text-surface transition-colors hover:bg-wood-mid disabled:opacity-40"
+        >
+          {state.phase === "feedback" ? (isLastJersey ? "See Results" : "Next") : "Guess"}
+        </button>
       </div>
     </main>
   );
