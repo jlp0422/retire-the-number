@@ -17,7 +17,6 @@ import {
 } from "@/lib/game/gameReducer";
 import { applyRoundResults } from "@/lib/game/rating";
 import { getStoredUserRating, setStoredUserRating } from "@/lib/game/userRating";
-import { JerseySilhouette } from "@/components/JerseySilhouette";
 import { JerseyScene } from "@/components/JerseyScene";
 
 const PLAYERS = playersData as RetiredPlayer[];
@@ -93,22 +92,15 @@ export default function PlayGame() {
                   : "border-error/30 bg-error-surface"
               }`}
             >
-              {result.player.hasPhoto ? (
-                <div className="relative h-14 aspect-[1024/1536] shrink-0 overflow-hidden rounded-md bg-jersey-canvas">
-                  <Image
-                    src={`/players/${result.player.imageFile}`}
-                    alt=""
-                    fill
-                    sizes="56px"
-                    className="object-contain"
-                  />
-                </div>
-              ) : (
-                <JerseySilhouette
-                  number={result.player.number}
-                  className="h-14 w-auto shrink-0 rounded-md"
+              <div className="relative h-14 aspect-[1024/1536] shrink-0 overflow-hidden rounded-md bg-jersey-canvas">
+                <Image
+                  src={`/players/${result.player.imageFile}`}
+                  alt=""
+                  fill
+                  sizes="56px"
+                  className="object-contain"
                 />
-              )}
+              </div>
               <div className="flex flex-1 flex-col">
                 <span className="font-medium text-foreground">
                   #{i + 1} · {result.player.playerName}
@@ -188,15 +180,9 @@ export default function PlayGame() {
         <span className="justify-self-end">Hints used: {state.hintJerseyCount}/{HINT_CAP}</span>
       </div>
 
-      {current.hasPhoto ? (
-        <div className="mx-4 mt-3 flex min-h-0 flex-1 items-stretch justify-center overflow-hidden rounded-2xl">
-          <JerseyScene imageFile={current.imageFile} className="h-full w-auto" />
-        </div>
-      ) : (
-        <div className="wood-panel mx-4 mt-3 flex flex-1 items-center justify-center rounded-2xl">
-          <JerseySilhouette number={current.number} className="h-[85%] max-h-80 w-auto drop-shadow-lg" />
-        </div>
-      )}
+      <div className="mx-4 mt-3 flex min-h-0 flex-1 items-stretch justify-center overflow-hidden rounded-2xl">
+        <JerseyScene imageFile={current.imageFile} className="h-full w-auto" />
+      </div>
 
       <div className="flex flex-col gap-4 px-6 py-5">
         <div className="flex justify-center gap-3">

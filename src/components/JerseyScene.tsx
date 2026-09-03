@@ -8,8 +8,7 @@ interface JerseySceneProps {
 // Composites the shared generated background art with a real per-player
 // jersey photo (public/players/<imageFile>), using the alignment tuned in the
 // jersey_reveal.html prototype (hook-top 11%, jersey width 75% of stage,
-// stage aspect 941:1672). Only rendered for players with hasPhoto: true —
-// see PlayGame.tsx — everyone else still gets JerseySilhouette.
+// stage aspect 941:1672). Rendered for every player in PlayGame.tsx.
 export function JerseyScene({ imageFile, className }: JerseySceneProps) {
   return (
     <div className={`relative aspect-[941/1672] overflow-hidden rounded-2xl ${className ?? ""}`}>
