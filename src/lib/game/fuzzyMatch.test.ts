@@ -13,7 +13,6 @@ const jordan: RetiredPlayer = {
   era: "1984-1998",
   imageFile: "chi-23-michael-jordan.jpg",
   difficulty: "easy",
-  hasPhoto: false,
   ratingScore: 2,
 };
 
@@ -28,7 +27,6 @@ const oneal: RetiredPlayer = {
   era: "1996-2004",
   imageFile: "lal-34-shaquille-oneal.jpg",
   difficulty: "hard",
-  hasPhoto: false,
   ratingScore: 8,
 };
 
@@ -43,7 +41,6 @@ const yao: RetiredPlayer = {
   era: "2002-2011",
   imageFile: "hou-11-yao-ming.png",
   difficulty: "medium",
-  hasPhoto: true,
   ratingScore: 5,
 };
 

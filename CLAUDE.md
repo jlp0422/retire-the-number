@@ -47,16 +47,14 @@ guess input, the feedback message, or (in the `"result"` phase branch) the
 full round summary with a per-jersey correct/incorrect list, a share
 button that copies a text summary to the clipboard, and a disabled
 "Submit to Leaderboard" stub (leaderboards are out of scope for this MVP).
-The jersey art itself is data-driven per player via `hasPhoto`
-(`src/lib/types.ts`): `true` renders `JerseyScene`
-(`src/components/JerseyScene.tsx`), which composites the shared
-`public/players/background.png` art with that player's own photo at
-`public/players/<imageFile>`; `false` falls back to `JerseySilhouette`, a
-generated SVG placeholder (team-neutral color, just the number) for
-players without a real photo yet. The results screen does the same
-`hasPhoto` check per row. To add a photo for another player: drop the
-image in `public/players/`, set `imageFile` to its filename, and flip
-`hasPhoto` to `true` in `data/players.csv`, then `npm run data:build`.
+The jersey art itself is `JerseyScene` (`src/components/JerseyScene.tsx`),
+which composites the shared `public/players/background.png` art with that
+player's own photo at `public/players/<imageFile>`. Every player in the
+pool is expected to have a real photo — there's no placeholder fallback in
+`PlayGame.tsx` (`JerseySilhouette` still exists for the landing page's
+decorative jersey in `src/app/page.tsx`, unrelated to player data). To add
+a new player: drop the image in `public/players/`, set `imageFile` to its
+filename in `data/players.csv`, then `npm run data:build`.
 
 **Why `PlayGame` must stay client-only:** the round is randomized in a
 `useState` lazy initializer. If it ever rendered on the server, the

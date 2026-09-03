@@ -1,124 +1,5 @@
 [
   {
-    "id": "chi-23-michael-jordan",
-    "playerName": "Michael Jordan",
-    "aliases": [
-      "Michael Jordan",
-      "MJ"
-    ],
-    "team": "Bulls",
-    "teamId": "CHI",
-    "league": "NBA",
-    "number": "23",
-    "era": "1984-1998",
-    "imageFile": "chi-23-michael-jordan.jpg",
-    "difficulty": "easy",
-    "hasPhoto": false,
-    "ratingScore": 2
-  },
-  {
-    "id": "mia-3-dwyane-wade",
-    "playerName": "Dwyane Wade",
-    "aliases": [
-      "Dwyane Wade",
-      "DWade"
-    ],
-    "team": "Heat",
-    "teamId": "MIA",
-    "league": "NBA",
-    "number": "3",
-    "era": "2003-2016 / 2018-2019",
-    "imageFile": "mia-3-dwyane-wade.jpg",
-    "difficulty": "medium",
-    "hasPhoto": false,
-    "ratingScore": 5
-  },
-  {
-    "id": "lal-34-shaquille-oneal",
-    "playerName": "Shaquille O'Neal",
-    "aliases": [
-      "Shaquille O'Neal",
-      "Shaq"
-    ],
-    "team": "Lakers",
-    "teamId": "LAL",
-    "league": "NBA",
-    "number": "34",
-    "era": "1996-2004",
-    "imageFile": "lal-34-shaquille-oneal.jpg",
-    "difficulty": "hard",
-    "hasPhoto": false,
-    "ratingScore": 8
-  },
-  {
-    "id": "bos-33-larry-bird",
-    "playerName": "Larry Bird",
-    "aliases": [
-      "Larry Bird",
-      "LB"
-    ],
-    "team": "Celtics",
-    "teamId": "BOS",
-    "league": "NBA",
-    "number": "33",
-    "era": "1979-1992",
-    "imageFile": "bos-33-larry-bird.jpg",
-    "difficulty": "easy",
-    "hasPhoto": false,
-    "ratingScore": 2
-  },
-  {
-    "id": "bos-34-paul-pierce",
-    "playerName": "Paul Pierce",
-    "aliases": [
-      "Paul Pierce",
-      "The Truth"
-    ],
-    "team": "Celtics",
-    "teamId": "BOS",
-    "league": "NBA",
-    "number": "34",
-    "era": "1998-2013",
-    "imageFile": "bos-34-paul-pierce.jpg",
-    "difficulty": "medium",
-    "hasPhoto": false,
-    "ratingScore": 5
-  },
-  {
-    "id": "min-21-kevin-garnett",
-    "playerName": "Kevin Garnett",
-    "aliases": [
-      "Kevin Garnett",
-      "KG"
-    ],
-    "team": "Timberwolves",
-    "teamId": "MIN",
-    "league": "NBA",
-    "number": "21",
-    "era": "1995-2007 / 2015-2016",
-    "imageFile": "min-21-kevin-garnett.jpg",
-    "difficulty": "hard",
-    "hasPhoto": false,
-    "ratingScore": 8
-  },
-  {
-    "id": "cle-23-lebron-james",
-    "playerName": "LeBron James",
-    "aliases": [
-      "LeBron James",
-      "King James"
-    ],
-    "team": "Cavaliers",
-    "teamId": "CLE",
-    "league": "NBA",
-    "number": "23",
-    "era": "2003-2010 / 2014-2018",
-    "imageFile": "cle-23-lebron-james.jpg",
-    "difficulty": "easy",
-    "hasPhoto": false,
-    "ratingScore": 2
-  },
-  {
     "id": "mia-13-dan-marino",
     "playerName": "Dan Marino",
     "aliases": [
@@ -132,7 +13,6 @@
     "era": "1983-1999",
     "imageFile": "mia-13-dan-marino.png",
     "difficulty": "easy",
-    "hasPhoto": true,
     "ratingScore": 2
   },
   {
@@ -149,7 +29,6 @@
     "era": "2002-2011",
     "imageFile": "hou-11-yao-ming.png",
     "difficulty": "medium",
-    "hasPhoto": true,
     "ratingScore": 5
   },
   {
@@ -166,7 +45,6 @@
     "era": "1954-1974",
     "imageFile": "atl-44-hank-aaron.png",
     "difficulty": "hard",
-    "hasPhoto": true,
     "ratingScore": 8
   },
   {
@@ -183,7 +61,6 @@
     "era": "2001-2012 / 2018-2019",
     "imageFile": "sea-51-ichiro-suzuki.png",
     "difficulty": "medium",
-    "hasPhoto": true,
     "ratingScore": 5
   },
   {
@@ -200,7 +77,6 @@
     "era": "2001-2009",
     "imageFile": "sd-21-ladainian-tomlinson.png",
     "difficulty": "medium",
-    "hasPhoto": true,
     "ratingScore": 5
   }
 ]
